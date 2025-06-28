@@ -577,14 +577,14 @@
         }
 
         .comparison-table .ai-column {
-            background: linear-gradient(135deg, #d4e157, #689f38);
+            background: linear-gradient(135deg, #6fe7b3, #3bc354);
             color: white;
             font-weight: bold;
         }
 
         .comparison-table .human-column {
-            background: #ffebee;
-            color: #c62828;
+            background: #f55d73;
+            color: #852424;
         }
 
 
@@ -873,6 +873,63 @@
             box-shadow: 0 0 20px rgba(0, 224, 180, 0.4);
         }
 
+        .expected-results {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .result-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .result-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #4f46e5;
+            margin-bottom: 10px;
+        }
+
+        .result-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: #111827;
+        }
+
+        .result-card p {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        .guarantee-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            margin-top: 60px;
+        }
+
+        .guarantee-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .guarantee-box p {
+            font-size: 1.2rem;
+            margin: 0 auto;
+            max-width: 700px;
+        }
+
         /* Responsive */
         @media (max-width: 600px) {
             .pricing-title {
@@ -1097,6 +1154,61 @@
             </div>
         </div>
     </section>
+    <!-- Expected Results Section -->
+    <section class="section expected-results">
+        <div class="container">
+            <h2>🎯 Expected Results & Guaranteed Outcomes</h2>
+            <p class="section-subtitle">Here's what you can expect within the first 90 days</p>
+
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-number">300%</div>
+                    <h3>Conversion Rate Increase</h3>
+                    <p>Our AI agents convert 3x more leads into customers through intelligent follow-ups and
+                        personalized conversations.</p>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-number">75%</div>
+                    <h3>Cost Reduction</h3>
+                    <p>Slash your customer service costs while providing superior service quality and 24/7 availability.
+                    </p>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-number">24/7</div>
+                    <h3>Never Miss a Lead</h3>
+                    <p>Capture and convert leads around the clock, even while you sleep or during holidays.</p>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-number">85%</div>
+                    <h3>SMS Open Rates</h3>
+                    <p>Achieve industry-leading SMS marketing results with AI-optimized messaging and timing.</p>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-number">5x</div>
+                    <h3>Faster Response Times</h3>
+                    <p>Instant responses that keep customers engaged and prevent them from going to competitors.</p>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-number">90%</div>
+                    <h3>Customer Satisfaction</h3>
+                    <p>Consistently high satisfaction scores through personalized, accurate, and helpful interactions.
+                    </p>
+                </div>
+            </div>
+
+            <div class="guarantee-box">
+                <h3>🏆 30-Day Money-Back Guarantee</h3>
+                <p>If you don't see a minimum 200% ROI within 30 days, we'll refund every penny – no questions asked!
+                </p>
+            </div>
+        </div>
+    </section>
+
 
 
 
@@ -1167,13 +1279,13 @@
         document.addEventListener('DOMContentLoaded', () => {
             const pricingData = {
                 monthly: [
-                    { name: 'Free', price: 0, features: ['10 SMS per month', 'Basic analytics', 'Email support', 'Perfect for demo'], plan: 'freetrial' },
+
                     { name: 'Basic', price: 39, features: ['1,000 SMS/month', 'Basic personalization', 'Standard support', 'Good for small stores'], plan: 'basic' },
                     { name: 'Standard', price: 119, features: ['4,000 SMS/month', '✔️ Chatbot included', 'Custom automation', 'Advanced analytics', 'Priority support'], plan: 'standard', featured: true },
                     { name: 'Pro', price: 249, features: ['10,000 SMS/month', '✔️ Full chatbot features', 'Full customization', 'Premium analytics', '24/7 support', 'API access'], plan: 'pro' }
                 ],
                 yearly: [
-                    { name: 'Free', price: 0, features: ['10 SMS per month', 'Basic analytics', 'Email support', 'Perfect for demo'], plan: 'freetrial' },
+
                     { name: 'Basic', price: 390, features: ['12,000 SMS/year', 'Basic personalization', 'Standard support', 'Good for small stores'], plan: 'basic' },
                     { name: 'Standard', price: 1190, features: ['48,000 SMS/year', '✔️ Chatbot included', 'Custom automation', 'Advanced analytics', 'Priority support'], plan: 'standard', featured: true },
                     { name: 'Pro', price: 2490, features: ['120,000 SMS/year', '✔️ Full chatbot features', 'Full customization', 'Premium analytics', '24/7 support', 'API access'], plan: 'pro' }
