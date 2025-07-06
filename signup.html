@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - AutoFlow AI</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -31,9 +33,11 @@
             0% {
                 background-position: 0% 50%;
             }
+
             50% {
                 background-position: 100% 50%;
             }
+
             100% {
                 background-position: 0% 50%;
             }
@@ -69,6 +73,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -164,8 +169,8 @@
             transition: opacity 0.3s ease;
         }
 
-        .form-input[type="password"]:focus + .password-requirements,
-        .form-input[type="password"]:not(:placeholder-shown) + .password-requirements {
+        .form-input[type="password"]:focus+.password-requirements,
+        .form-input[type="password"]:not(:placeholder-shown)+.password-requirements {
             opacity: 1;
         }
 
@@ -417,25 +422,32 @@
             0% {
                 transform: translate(0, 0) rotate(0deg);
             }
+
             25% {
                 transform: translate(30px, -30px) rotate(90deg);
             }
+
             50% {
                 transform: translate(-20px, -60px) rotate(180deg);
             }
+
             75% {
                 transform: translate(-40px, -20px) rotate(270deg);
             }
+
             100% {
                 transform: translate(0, 0) rotate(360deg);
             }
         }
 
         @keyframes triangleFloat {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0) rotate(0deg);
                 opacity: 0.08;
             }
+
             50% {
                 transform: translateY(-20px) rotate(180deg);
                 opacity: 0.15;
@@ -447,10 +459,12 @@
                 transform: rotate(0deg) scale(1);
                 opacity: 0.1;
             }
+
             50% {
                 transform: rotate(180deg) scale(1.2);
                 opacity: 0.2;
             }
+
             100% {
                 transform: rotate(360deg) scale(1);
                 opacity: 0.1;
@@ -462,12 +476,15 @@
                 transform: translateX(0);
                 opacity: 0;
             }
+
             10% {
                 opacity: 1;
             }
+
             90% {
                 opacity: 1;
             }
+
             100% {
                 transform: translateX(100vw);
                 opacity: 0;
@@ -475,9 +492,12 @@
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0) rotate(0deg);
             }
+
             50% {
                 transform: translateY(-10px) rotate(180deg);
             }
@@ -519,12 +539,18 @@
 
         /* Success animation */
         @keyframes bounce {
-            0%, 20%, 60%, 100% {
+
+            0%,
+            20%,
+            60%,
+            100% {
                 transform: translateY(0);
             }
+
             40% {
                 transform: translateY(-10px);
             }
+
             80% {
                 transform: translateY(-5px);
             }
@@ -533,8 +559,121 @@
         .bounce {
             animation: bounce 0.6s ease;
         }
+
+        #signup-transition-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #18132a;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s;
+        }
+
+        #signup-transition-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        #signup-transition-overlay.fade-out {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.7s;
+        }
+
+        .transition-content {
+            width: 100vw;
+            max-width: 420px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .neon-loader {
+            width: 320px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 36px;
+        }
+
+        .neon-bar {
+            width: 0%;
+            height: 8px;
+            border-radius: 6px;
+            background: linear-gradient(90deg, #24c6dc 0%, #7c5fd6 60%, #fff 100%);
+            box-shadow: 0 0 16px 4px #24c6dc88, 0 0 32px 8px #7c5fd688;
+            transition: width 2.2s cubic-bezier(.4, 2, .3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .neon-bar.glow {
+            animation: neon-glow 1.2s infinite alternate;
+        }
+
+        @keyframes neon-glow {
+            0% {
+                box-shadow: 0 0 16px 4px #24c6dc88, 0 0 32px 8px #7c5fd688;
+            }
+
+            100% {
+                box-shadow: 0 0 32px 8px #24c6dc, 0 0 64px 16px #fff;
+            }
+        }
+
+        .neon-text {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.12em;
+            text-align: center;
+            opacity: 0;
+            text-shadow: 0 0 16px #24c6dc, 0 0 32px #7c5fd6, 0 0 2px #fff;
+            transition: opacity 0.5s cubic-bezier(.4, 2, .3, 1);
+            filter: drop-shadow(0 0 8px #24c6dc);
+        }
+
+        .neon-text.visible {
+            opacity: 1;
+            animation: neon-text-glow 1.2s infinite alternate;
+        }
+
+        @keyframes neon-text-glow {
+            0% {
+                text-shadow: 0 0 16px #24c6dc, 0 0 32px #7c5fd6, 0 0 2px #fff;
+            }
+
+            100% {
+                text-shadow: 0 0 32px #24c6dc, 0 0 64px #fff, 0 0 8px #7c5fd6;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .neon-loader {
+                width: 90vw;
+                max-width: 260px;
+            }
+
+            .neon-bar {
+                height: 7px;
+            }
+
+            .neon-text {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
+
 <body>
     <!-- Background animated elements -->
     <div class="bg-animations">
@@ -572,41 +711,20 @@
         <form id="signupForm">
             <div class="form-group">
                 <label class="form-label" for="fullName">Full Name</label>
-                <input 
-                    type="text" 
-                    id="fullName" 
-                    name="fullName" 
-                    class="form-input" 
-                    placeholder="John Doe"
-                    required
-                >
+                <input type="text" id="fullName" name="fullName" class="form-input" placeholder="John Doe" required>
                 <div class="error-message" id="nameError">Please enter your full name</div>
             </div>
 
             <div class="form-group">
                 <label class="form-label" for="email">Email Address</label>
-                <input 
-                    type="email" 
-                    id="email" 
-                    name="email" 
-                    class="form-input" 
-                    placeholder="john@example.com"
-                    required
-                >
+                <input type="email" id="email" name="email" class="form-input" placeholder="john@example.com" required>
                 <div class="error-message" id="emailError">Please enter a valid email address</div>
             </div>
 
             <div class="form-group">
                 <label class="form-label" for="password">Password</label>
-                <input 
-                    type="password" 
-                    id="password" 
-                    name="password" 
-                    class="form-input" 
-                    placeholder="Enter your password"
-                    required
-                    minlength="6"
-                >
+                <input type="password" id="password" name="password" class="form-input"
+                    placeholder="Enter your password" required minlength="6">
                 <div class="password-requirements">Minimum 6 characters required</div>
                 <div class="error-message" id="passwordError">Password must be at least 6 characters long</div>
             </div>
@@ -621,110 +739,155 @@
         </div>
     </div>
 
+    <!-- Signup Success Transition Overlay -->
+    <div id="signup-transition-overlay">
+        <div class="transition-content">
+            <div class="neon-loader">
+                <div class="neon-bar"></div>
+            </div>
+            <div class="neon-text" id="neon-autoflow">AutoFlow</div>
+        </div>
+    </div>
+
     <script>
-        const form = document.getElementById('signupForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const inputs = form.querySelectorAll('.form-input');
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('signupForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const inputs = form.querySelectorAll('.form-input');
 
-        // Add floating label effect and validation
-        inputs.forEach(input => {
-            input.addEventListener('blur', validateField);
-            input.addEventListener('input', clearError);
-        });
-
-        function validateField(e) {
-            const field = e.target;
-            const fieldName = field.name;
-            const value = field.value.trim();
-            let isValid = true;
-
-            // Clear previous errors
-            clearError(e);
-
-            // Validate based on field type
-            switch(fieldName) {
-                case 'fullName':
-                    if (value.length < 2) {
-                        showError('nameError', 'Please enter your full name');
-                        isValid = false;
-                    }
-                    break;
-
-                case 'email':
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (!emailRegex.test(value)) {
-                        showError('emailError', 'Please enter a valid email address');
-                        isValid = false;
-                    }
-                    break;
-
-                case 'password':
-                    if (value.length < 6) {
-                        showError('passwordError', 'Password must be at least 6 characters long');
-                        isValid = false;
-                    }
-                    break;
-            }
-
-            return isValid;
-        }
-
-        function showError(errorId, message) {
-            const errorElement = document.getElementById(errorId);
-            errorElement.textContent = message;
-            errorElement.classList.add('show');
-        }
-
-        function clearError(e) {
-            const field = e.target;
-            const fieldName = field.name;
-            const errorElement = document.getElementById(fieldName + 'Error');
-            if (errorElement) {
-                errorElement.classList.remove('show');
-            }
-        }
-
-        // Form submission
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            let isFormValid = true;
-            
-            // Validate all fields
+            // Validation functions same as before
             inputs.forEach(input => {
-                const fieldValid = validateField({ target: input });
-                if (!fieldValid) isFormValid = false;
+                input.addEventListener('blur', validateField);
+                input.addEventListener('input', clearError);
             });
 
-            if (isFormValid) {
-                // Simulate account creation
+            function validateField(e) {
+                const field = e.target;
+                const fieldName = field.name;
+                const value = field.value.trim();
+                let isValid = true;
+                clearError(e);
+
+                switch (fieldName) {
+                    case 'fullName':
+                        if (value.length < 2) {
+                            showError('nameError', 'Please enter your full name');
+                            isValid = false;
+                        }
+                        break;
+                    case 'email':
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailRegex.test(value)) {
+                            showError('emailError', 'Please enter a valid email address');
+                            isValid = false;
+                        }
+                        break;
+                    case 'password':
+                        if (value.length < 6) {
+                            showError('passwordError', 'Password must be at least 6 characters long');
+                            isValid = false;
+                        }
+                        break;
+                }
+                return isValid;
+            }
+
+            function showError(errorId, message) {
+                const errorElement = document.getElementById(errorId);
+                errorElement.textContent = message;
+                errorElement.classList.add('show');
+            }
+
+            function clearError(e) {
+                const field = e.target;
+                const fieldName = field.name;
+                const errorElement = document.getElementById(fieldName + 'Error');
+                if (errorElement) {
+                    errorElement.classList.remove('show');
+                }
+            }
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                let isFormValid = true;
+                inputs.forEach(input => {
+                    if (!validateField({ target: input })) isFormValid = false;
+                });
+                if (!isFormValid) return;
+
                 submitBtn.textContent = 'Creating Account...';
                 submitBtn.disabled = true;
-                
+
+                const data = {
+                    fullName: form.fullName.value.trim(),
+                    email: form.email.value.trim(),
+                    password: form.password.value
+                };
+
+                // CHANGE THIS URL to your actual backend registration API endpoint
+                const backendUrl = '/api/auth/register';
+
+                fetch(backendUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                })
+                    .then(async res => {
+                        const response = await res.json();
+
+                        if (res.ok && response.access_token) {
+                            // Save tokens to localStorage
+                            localStorage.setItem('access_token', response.access_token);
+                            localStorage.setItem('refresh_token', response.refresh_token);
+                            submitBtn.textContent = 'Account Created! ✨';
+                            submitBtn.style.background = 'linear-gradient(135deg, #48BB78 0%, #38A169 100%)';
+                            form.parentElement.classList.add('bounce');
+                            // Start transition overlay
+                            showSignupTransition();
+                        } else {
+                            submitBtn.textContent = 'Sign Up';
+                            submitBtn.disabled = false;
+                            alert(response.error || response.message || 'Registration failed. Please try again.');
+                        }
+                    })
+                    .catch(error => {
+                        submitBtn.textContent = 'Sign Up';
+                        submitBtn.disabled = false;
+                        alert('Network error: ' + error.message);
+                    });
+            });
+
+            // --- Signup Success Transition Overlay Logic ---
+            function showSignupTransition() {
+                const overlay = document.getElementById('signup-transition-overlay');
+                const neonBar = overlay.querySelector('.neon-bar');
+                const neonText = document.getElementById('neon-autoflow');
+                overlay.classList.add('active');
+                neonBar.style.width = '0%';
+                neonText.classList.remove('visible');
+                // Animate the neon bar
                 setTimeout(() => {
-                    submitBtn.textContent = 'Account Created! ✨';
-                    submitBtn.style.background = 'linear-gradient(135deg, #48BB78 0%, #38A169 100%)';
-                    
-                    // Add bounce animation
-                    form.parentElement.classList.add('bounce');
-                    
-                    setTimeout(() => {
-                        alert('Welcome to AutoFlow AI! Your account has been created successfully.');
-                        // In a real app, redirect to dashboard or login
-                    }, 1000);
-                }, 2000);
+                    neonBar.style.width = '100%';
+                    neonBar.classList.add('glow');
+                }, 100);
+                // After bar fills, show text
+                setTimeout(() => {
+                    neonBar.classList.remove('glow');
+                    neonText.classList.add('visible');
+                }, 2400);
+                // After text shows, fade out and redirect
+                setTimeout(() => {
+                    overlay.classList.add('fade-out');
+                }, 3400);
+                setTimeout(() => {
+                    window.location.href = 'http://localhost:3000';
+                }, 4100);
             }
         });
-
-        // Add some interactive hover effects
-        document.querySelector('.logo-icon').addEventListener('mouseenter', function() {
-            this.style.transform = 'rotate(360deg) scale(1.1)';
-            this.style.transition = 'transform 0.5s ease';
-        });
-
-        document.querySelector('.logo-icon').addEventListener('mouseleave', function() {
-            this.style.transform = 'rotate(0deg) scale(1)';
-        });
     </script>
+
+
 </body>
+
 </html>
