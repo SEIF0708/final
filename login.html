@@ -488,7 +488,7 @@
                             localStorage.setItem('access_token', data.access_token);
                             localStorage.setItem('refresh_token', data.refresh_token);
                             showAlert('Login successful! Welcome back.');
-                            window.location.href = 'http://localhost:3000'; // Redirect to React dashboard
+                            window.location.href = 'http://192.168.1.117:3000'; // Redirect to React dashboard
                         } else {
                             showAlert(data.error || data.message || 'Login failed. Please try again.');
                         }
