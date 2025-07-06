@@ -559,118 +559,6 @@
         .bounce {
             animation: bounce 0.6s ease;
         }
-
-        #signup-transition-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 100vw;
-            height: 100vh;
-            background: #18132a;
-            z-index: 9999;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.5s;
-        }
-
-        #signup-transition-overlay.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        #signup-transition-overlay.fade-out {
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.7s;
-        }
-
-        .transition-content {
-            width: 100vw;
-            max-width: 420px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .neon-loader {
-            width: 320px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 36px;
-        }
-
-        .neon-bar {
-            width: 0%;
-            height: 8px;
-            border-radius: 6px;
-            background: linear-gradient(90deg, #24c6dc 0%, #7c5fd6 60%, #fff 100%);
-            box-shadow: 0 0 16px 4px #24c6dc88, 0 0 32px 8px #7c5fd688;
-            transition: width 2.2s cubic-bezier(.4, 2, .3, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .neon-bar.glow {
-            animation: neon-glow 1.2s infinite alternate;
-        }
-
-        @keyframes neon-glow {
-            0% {
-                box-shadow: 0 0 16px 4px #24c6dc88, 0 0 32px 8px #7c5fd688;
-            }
-
-            100% {
-                box-shadow: 0 0 32px 8px #24c6dc, 0 0 64px 16px #fff;
-            }
-        }
-
-        .neon-text {
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: #fff;
-            letter-spacing: 0.12em;
-            text-align: center;
-            opacity: 0;
-            text-shadow: 0 0 16px #24c6dc, 0 0 32px #7c5fd6, 0 0 2px #fff;
-            transition: opacity 0.5s cubic-bezier(.4, 2, .3, 1);
-            filter: drop-shadow(0 0 8px #24c6dc);
-        }
-
-        .neon-text.visible {
-            opacity: 1;
-            animation: neon-text-glow 1.2s infinite alternate;
-        }
-
-        @keyframes neon-text-glow {
-            0% {
-                text-shadow: 0 0 16px #24c6dc, 0 0 32px #7c5fd6, 0 0 2px #fff;
-            }
-
-            100% {
-                text-shadow: 0 0 32px #24c6dc, 0 0 64px #fff, 0 0 8px #7c5fd6;
-            }
-        }
-
-        @media (max-width: 500px) {
-            .neon-loader {
-                width: 90vw;
-                max-width: 260px;
-            }
-
-            .neon-bar {
-                height: 7px;
-            }
-
-            .neon-text {
-                font-size: 2rem;
-            }
-        }
     </style>
 </head>
 
@@ -736,16 +624,6 @@
 
         <div class="login-link">
             Already have an account? <a href="login.html">Log in here</a>
-        </div>
-    </div>
-
-    <!-- Signup Success Transition Overlay -->
-    <div id="signup-transition-overlay">
-        <div class="transition-content">
-            <div class="neon-loader">
-                <div class="neon-bar"></div>
-            </div>
-            <div class="neon-text" id="neon-autoflow">AutoFlow</div>
         </div>
     </div>
 
@@ -843,8 +721,9 @@
                             submitBtn.textContent = 'Account Created! ✨';
                             submitBtn.style.background = 'linear-gradient(135deg, #48BB78 0%, #38A169 100%)';
                             form.parentElement.classList.add('bounce');
-                            // Start transition overlay
-                            showSignupTransition();
+                            setTimeout(() => {
+                                window.location.href = 'http://192.168.1.117:3000';
+                            }, 1000);
                         } else {
                             submitBtn.textContent = 'Sign Up';
                             submitBtn.disabled = false;
@@ -857,33 +736,6 @@
                         alert('Network error: ' + error.message);
                     });
             });
-
-            // --- Signup Success Transition Overlay Logic ---
-            function showSignupTransition() {
-                const overlay = document.getElementById('signup-transition-overlay');
-                const neonBar = overlay.querySelector('.neon-bar');
-                const neonText = document.getElementById('neon-autoflow');
-                overlay.classList.add('active');
-                neonBar.style.width = '0%';
-                neonText.classList.remove('visible');
-                // Animate the neon bar
-                setTimeout(() => {
-                    neonBar.style.width = '100%';
-                    neonBar.classList.add('glow');
-                }, 100);
-                // After bar fills, show text
-                setTimeout(() => {
-                    neonBar.classList.remove('glow');
-                    neonText.classList.add('visible');
-                }, 2400);
-                // After text shows, fade out and redirect
-                setTimeout(() => {
-                    overlay.classList.add('fade-out');
-                }, 3400);
-                setTimeout(() => {
-                    window.location.href = 'http://192.168.1.117:3000';
-                }, 4100);
-            }
         });
     </script>
 
